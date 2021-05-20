@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="base.definition" template="/WEB-INF/views/mainTemplate.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"></put-attribute>
+        <put-attribute name="body" value=""></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
+    </definition>
+    
+  <!--    <definition name="base.definition.login" template="/WEB-INF/views/LoginTemplate.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
+        <put-attribute name="body" value=""></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
+    </definition>
+ 
+ 
+     <definition name="index" extends="base.definition.login">
+        <put-attribute name="title" value="Login Page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/index.jsp"></put-attribute>
+    </definition> -->
+ 
+     <definition name="homePage" extends="base.definition">
+        <put-attribute name="title" value="Home Page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/homePage.jsp"></put-attribute>
+    </definition>
+    
+    <definition name="uploadAsinFile" extends="base.definition">
+        <put-attribute name="title" value="ASIN Data Upload"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/uploadAsinFile.jsp"></put-attribute>
+    </definition> 
+    
+     <definition name="uploadPromotionsFile" extends="base.definition">
+        <put-attribute name="title" value="Promotions Upload"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/uploadPromotionsFile.jsp"></put-attribute>
+    </definition> 
+    
+     <definition name="uploadSalesReport" extends="base.definition">
+        <put-attribute name="title" value="Promotions Sales"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/uploadSalesReport.jsp"></put-attribute>
+    </definition>
+    
+    <definition name="asinResult" extends="base.definition">
+        <put-attribute name="title" value="Asin Results"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/asinResult.jsp"></put-attribute>
+    </definition>
+    
+    
+    <definition name="uploadPriceFile" extends="base.definition">
+        <put-attribute name="title" value="Price File"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/uploadPriceFile.jsp"></put-attribute>
+    </definition>
+    
+     <definition name="priceResult" extends="base.definition">
+        <put-attribute name="title" value="Price Result"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/priceResult.jsp"></put-attribute>
+    </definition>
+    
+     <definition name="salesResults" extends="base.definition">
+        <put-attribute name="title" value="Sales Result"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/salesResults.jsp"></put-attribute>
+    </definition>
+    
+     <definition name="search" extends="base.definition">
+        <put-attribute name="title" value="Seqarch Page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/search.jsp"></put-attribute>
+    </definition>
+    
+    <definition name="PriceFeed" extends="base.definition">
+        <put-attribute name="title" value="PriceFeed Page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/PriceFeed.jsp"></put-attribute>
+    </definition>
+    
+     <definition name="errorpage" extends="base.definition">
+        <put-attribute name="title" value="Error  Page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/errorpage.jsp"></put-attribute>
+    </definition>
+    
+     <definition name="pagination" extends="base.definition">
+        <put-attribute name="title" value="Pagination  Page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/pagination.jsp"></put-attribute>
+    </definition>
+    
+     <definition name="fileUploadError" extends="base.definition">
+        <put-attribute name="title" value="FileUpload Error  Page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/fileUploadError.jsp"></put-attribute>
+    </definition>
+    
+     <definition name="priceSearchPage" extends="base.definition">
+        <put-attribute name="title" value="price Search Page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/priceSearchPage.jsp"></put-attribute>
+    </definition>
+    
+    
+</tiles-definitions>
