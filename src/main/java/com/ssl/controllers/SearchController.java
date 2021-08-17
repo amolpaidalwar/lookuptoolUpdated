@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.ssl.json.AmazonLookupJsonObject;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -138,30 +139,32 @@ public class SearchController {
 		session.setAttribute("priceDownloadOption", "true");
 
 		// Fetch the page number
-		Integer pageNumber = 0;
+		Integer pageNumber = Integer.valueOf(0);
 		// Default page length is 10 records per page
-		Integer pageDisplayLength = 10;
+		Integer pageDisplayLength = Integer.valueOf(10);
 		if (null != request.getParameter("iDisplayStart"))
-			pageNumber = (Integer.valueOf(request.getParameter("iDisplayStart")) / 10) + 1;
+			pageNumber = Integer.valueOf(Integer.valueOf(request.getParameter("iDisplayStart")) / 10) + 1;
 		if (null != request.getParameter("iDisplayLength"))
 			pageDisplayLength = Integer.valueOf(request.getParameter("iDisplayLength"));
 
 		List<SchemePriceModel> SList = searchServiceImpl.getPriceData(sku, dateSubmitted, pageNumber,
 				pageDisplayLength);
 		int count = 0;
-		if (!CollectionUtils.isEmpty(SList))
+		AmazonLookupJsonObject jsonObject = new AmazonLookupJsonObject();
+		if (!CollectionUtils.isEmpty(SList)) {
 			count = searchServiceImpl.getDataCount(sku, dateSubmitted);
-		session.setAttribute("paginationSize", count);
+			jsonObject.setMessage("SUCCESS");
+			jsonObject.setResult("1");
+		}
+		session.setAttribute("paginationSize", Integer.valueOf(count));
 
 		List<SchemePriceData> dataList = new ArrayList<>();
+		List<SchemePriceData> priceData = null;
 
 		if (!CollectionUtils.isEmpty(SList)) {
-			dataList = DataTransformation.populateSchemePriceData(SList);
+			priceData = DataTransformation.populateSchemePriceData(SList);
 		}
-		SchemePriceJsonObject jsonObject = new SchemePriceJsonObject();
-		jsonObject.setiTotalDisplayRecords(count);
-		jsonObject.setiTotalRecords(count);
-		jsonObject.setAaData(dataList);
+		jsonObject.setPriceData(priceData);
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		return gson.toJson(jsonObject);
